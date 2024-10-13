@@ -115,21 +115,21 @@ for name, attrs in pairs {
 
   ---- :help group-name --------------------------------------
 
-  Comment = { fg = a.com, italic = italic },
+  Comment = { fg = a.com },
   Identifier = { fg = a.fg },
-  Function = { fg = b.yellow },
-  Constant = { fg = c.magenta },
-  String = { fg = b.blue, italic = italic },
-  Character = { fg = c.blue },
-  Number = { fg = b.magenta },
-  Boolean = 'Number',
+  Function = { fg = c.green },
+  Constant = 'Identifier',
+  String = { fg = b.blue },
+  Character = { fg = b.magenta },
+  Number = 'Character',
+  Boolean = 'Keyword',
   -- Float = {},
 
-  Statement = { fg = c.yellow },
+  Statement = { fg = b.red, bold = bold },
   -- Conditional = {},
   -- Repeat = {},
   -- Label = {},
-  Operator = { fg = b.red },
+  Operator = {},
   -- Keyword = {},
   -- Exception = {},
 
@@ -144,10 +144,10 @@ for name, attrs in pairs {
   -- Structure = {},
   -- Typedef = {},
 
-  Special = { fg = b.yellow },
+  Special = 'Identifier',
   -- SpecialChar = {},
   -- Tag = {},
-  Delimiter = { fg = d.yellow },
+  -- Delimiter = {},
   -- SpecialComment = {},
   -- Debug = {},
 
@@ -155,7 +155,7 @@ for name, attrs in pairs {
   Bold = { bold = bold },
   Italic = { italic = italic },
 
-  Ignore = { fg = a.ui },
+  Ignore = { fg = a.fg },
   Error = { bg = d.red },
   Todo = { fg = a.com, bold = bold },
 
@@ -184,7 +184,7 @@ for name, attrs in pairs {
   ['@keyword.directive'] = 'PreProc',
   -- ['@keyword.directive.define'] = {},
   -- ['@keyword.exception'] = {},
-  ['@keyword.function'] = 'PreProc',
+  -- ['@keyword.function'] = 'PreProc', -- by disabling fixes lua function keyword
   ['@keyword.import'] = 'PreProc',
   -- ['@keyword.operator'] = {},
   -- ['@keyword.repeat'] = {},
@@ -207,18 +207,18 @@ for name, attrs in pairs {
   -- ['@type'] = {},
   -- ['@type.builtin'] = {},
   -- ['@type.definition'] = {},
-  ['@type.qualifier'] = 'Statement',
+  -- ['@type.qualifier'] = 'Statement', -- disabling fixes @ symbol before ViewBuilder State
   -- ['@attribute'] = {},
   -- ['@property'] = {},
 
   -- ['@function'] = {},
   -- ['@function.builtin'] = {},
   ['@function.macro'] = 'Function',
-  -- ['@function.method'] = {},
+  ['@function.method'] = {}, -- empty table fixes subscript and range operator colors
   -- ['@constructor'] = {},
 
   -- ['@punctuation.bracket'] = {},
-  ['@punctuation.delimiter'] = { fg = c.red },
+  ['@punctuation.delimiter'] = 'Identifier',
   -- ['@punctuation.special'] = {},
 
   -- ['@comment'] = {},
@@ -262,7 +262,7 @@ for name, attrs in pairs {
   ---- :help diagnostic-highlight ----------------------------
 
   DiagnosticError = { fg = c.red },
-  DiagnosticWarn = { fg = b.yellow },
+  DiagnosticWarn = { fg = c.yellow },
   DiagnosticInfo = { fg = c.blue },
   DiagnosticHint = { fg = c.cyan },
   DiagnosticOk = { fg = c.green },
