@@ -131,21 +131,21 @@ for name, attrs in pairs {
 
   ---- :help group-name --------------------------------------
 
-  Comment = { fg = a.com, italic = italic },
+  Comment = { fg = a.com },
   Identifier = { fg = a.fg },
-  Function = { fg = b.yellow },
-  Constant = { fg = c.magenta },
-  String = { fg = b.blue, italic = italic },
-  Character = { fg = c.blue },
-  Number = { fg = b.magenta },
-  Boolean = 'Number',
+  Function = { fg = c.green },
+  Constant = 'Identifier',
+  String = { fg = b.blue },
+  Character = { fg = b.magenta },
+  Number = 'Character',
+  Boolean = 'Keyword',
   -- Float = {},
 
-  Statement = { fg = c.yellow },
+  Statement = { fg = b.red, bold = bold },
   -- Conditional = {},
   -- Repeat = {},
   -- Label = {},
-  Operator = { fg = b.red },
+  Operator = {},
   -- Keyword = {},
   -- Exception = {},
 
@@ -160,10 +160,10 @@ for name, attrs in pairs {
   -- Structure = {},
   -- Typedef = {},
 
-  Special = { fg = b.yellow },
+  Special = 'Identifier',
   -- SpecialChar = {},
   -- Tag = {},
-  Delimiter = { fg = d.yellow },
+  -- Delimiter = {},
   -- SpecialComment = {},
   -- Debug = {},
 
@@ -171,7 +171,7 @@ for name, attrs in pairs {
   Bold = { bold = bold },
   Italic = { italic = italic },
 
-  Ignore = { fg = a.ui },
+  Ignore = { fg = a.fg },
   Error = { bg = d.red },
   Todo = { fg = a.com, bold = bold },
 
@@ -220,13 +220,13 @@ for name, attrs in pairs {
   -- ['@function'] = {},
   ['@function.builtin'] = '@function',
   ['@function.macro'] = '@function',
-  -- ['@function.method'] = {},
+  ['@function.method'] = {}, -- empty table fixes subscript and range operator colors
   ['@constructor'] = '@function',
   -- ['@operator'] = {},
 
   -- ['@keyword'] = {},
   -- ['@keyword.coroutine'] = {},
-  ['@keyword.function'] = 'PreProc',
+  -- ['@keyword.function'] = 'PreProc', -- by disabling fixes lua function keyword
   -- ['@keyword.operator'] = {},
   ['@keyword.import'] = 'PreProc',
   -- ['@keyword.type'] = {},
@@ -241,7 +241,7 @@ for name, attrs in pairs {
   -- ['@keyword.directive.define'] = {},
 
   -- ['@punctuation.bracket'] = {},
-  ['@punctuation.delimiter'] = { fg = c.red },
+  ['@punctuation.delimiter'] = 'Identifier',
   -- ['@punctuation.special'] = {},
 
   -- ['@comment'] = {},
@@ -290,7 +290,7 @@ for name, attrs in pairs {
   ---- :help diagnostic-highlight ----------------------------
 
   DiagnosticError = { fg = c.red },
-  DiagnosticWarn = { fg = b.yellow },
+  DiagnosticWarn = { fg = c.yellow },
   DiagnosticInfo = { fg = c.blue },
   DiagnosticHint = { fg = c.cyan },
   DiagnosticOk = { fg = c.green },
