@@ -17,7 +17,7 @@ if vim.g.melange_enable_font_variants == true or vim.g.melange_enable_font_varia
   --- Enable all font attributes by default
   bold = true
   italic = true
-  underline = true
+  underline = false
   undercurl = true
   strikethrough = true
 elseif type(vim.g.melange_enable_font_variants) == 'table' then
